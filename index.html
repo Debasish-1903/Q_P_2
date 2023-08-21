@@ -1,0 +1,205 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+  <title>Algo_Search_Engine</title>
+  <!--<link rel="stylesheet" href="style.css">-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+  
+
+@keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .results-box {
+      padding: 15px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 8px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    /* Your updated CSS code goes here */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #0f0f68;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form input[type="text"] {
+  padding: 8px 12px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  width: 300px;
+}
+
+.form input[type="submit"] {
+  padding: 8px 16px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background-color: #10d244;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.form input[type="submit"]:hover {
+  background-color: #0ca737;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.results-box {
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.results-box a {
+  text-decoration: none;
+  color: #0b0d25;
+  transition: color 0.3s ease;
+}
+
+.results-box a:hover {
+  color: #1b01c5;
+}
+
+.no-results-msg {
+  color: #e71c1c;
+  margin-top: 10px;
+}
+
+footer {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #0f0f68;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #dadff0;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+.creator {
+  margin: 5px 7px;
+  color: yellow;
+}
+
+.footer-links {
+  margin: 5px auto;
+}
+
+.footer-links a {
+  color: #dadff0;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Algo_Search</h1>
+    <div class="form">
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.search.label }}
+        {{ form.search() }}
+        {{ form.submit() }}
+      </form>
+    </div>
+  </header>
+
+  <!-- Display results or welcome message -->
+  <div class="container">
+    {% if results %}
+      <div class="results">
+        {% for (result, q_heading) in results %}
+        <div class="results-box">
+          <p>{{ loop.index }}. <a href="{{ result[0] }}" target="_blank">{{ q_heading }}</a></p> 
+          <!--<p>{{ loop.index }}. <a href="{{ result[1] }}" target="_blank">{{ q_heading }}</a></p> -->
+
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="no-results-msg">Welcome to Code Quest!</p>
+      {% if search_triggered %}
+          <p class="no-results-msg">No results found, please try with other relevant words.</p>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <footer>
+    <div class="creator">Created by Debasish Das</div>
+    <div class="Footer-Links">
+      <a href="https://www.linkedin.com/in/debasish-das-740752207/" target="_blank">LinkedIn</a>
+      <a href="mailto:das31debasish@gmail.com">Email</a>
+    </div>
+  </footer>
+</body>
+</html>
