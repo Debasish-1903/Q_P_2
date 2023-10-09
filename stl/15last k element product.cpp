@@ -1,4 +1,8 @@
 
+/*
+
+DAY 5 MINIMAL
+
 Product of the Last K numbers
 
 Time-Limit: 2 sec Score: 1.00/100
@@ -47,7 +51,11 @@ Sample Output 1
 20
 40
 0
-32
+32   */
+
+
+
+
 
 
 
@@ -126,3 +134,15 @@ int main() {
 
     return 0;
 }
+
+
+
+/*Fermat’s Little Theorem is a fundamental theorem in elementary number theory. It helps compute powers of integers modulo prime numbers and is important in applications of elementary number theory, including primality testing and public-key cryptography1.
+
+The theorem states that if p is a prime number, then for any integer a, the number a^p - a is an integer multiple of p. In the notation of modular arithmetic, this is expressed as a^p ≡ a (mod p)234.
+
+For example, if a = 2 and p = 7, then 2^7 = 128, and 128 - 2 = 126 = 7 × 18 is an integer multiple of 73.
+
+A special case of Fermat’s Little Theorem is when a is not divisible by p. In this case, the theorem is equivalent to the statement that a^(p-1) - 1 is an integer multiple of p, or expressed in modular arithmetic as a^(p-1) ≡ 1 (mod p)2.
+
+Fermat’s Little Theorem can be used to find the inverse of a number modulo m. If we know m is prime, then we can use Fermat’s little theorem to find the inverse. This can be expressed as: a^(m-2) ≡ a^-1 (mod m)2. This property is used in the corrected code I provided earlier to calculate the modular multiplicative inverse of a number.*/

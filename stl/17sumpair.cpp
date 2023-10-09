@@ -60,7 +60,8 @@ vector<ll>arr;
     {
         if(mp.find(brr[index])!=mp.end()&&mp[brr[index]]>0) mp[brr[index]]--;
         
-        mp[brr[index]+val]++;
+        brr[index]+=val;
+        mp[brr[index]]++;
         
         
     }

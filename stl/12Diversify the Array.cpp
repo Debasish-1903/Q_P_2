@@ -1,5 +1,5 @@
 
-Diversify the Array
+/*
 
 Time-Limit: 2 sec Score: 1.00/100
 Difficulty : 
@@ -66,6 +66,7 @@ Change the array to A = [5, 6, 2, 3, 4, 4]. Here we change the elements at posit
 
 
 
+*/
 
 
 
