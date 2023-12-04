@@ -131,8 +131,9 @@ void rec(ll level){
         current_perm.push_back(num);
         available.erase(available.find(num));
         rec(level+1);
-        available.insert(num);
         current_perm.pop_back();
+       available.insert(num);
+        
         
     }
     
@@ -145,8 +146,6 @@ void rec(ll level){
 void solve(){
 
 cin>>n;
-
-
 
 ll x;
 for(ll i=0;i<n;i++){
