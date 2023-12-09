@@ -64,6 +64,8 @@ Sample Output 1
   to make it palindrom.  */
 
 
+// with the problem statement and approach 
+
 
 #include<bits/stdc++.h>
 using namespace std;
