@@ -1,3 +1,70 @@
+/*Make Palindrome
+
+Time-Limit: 2 sec Score: 50.00/100
+Difficulty : 
+ Memory: 256 MB Accepted Submissions: 100
+Relevant For:
+Description
+
+Given a string 
+s
+, find the minimum number of characters that need to be inserted into the string to make it a palindrome.
+
+
+Input Format
+
+First line contains 
+T
+ - the number of test cases.
+First line of each test case contains the string 
+s
+.
+
+
+Output Format
+
+For each test case, output the minimum number of characters that need to be inserted into the string to make it a palindrome.
+
+
+Constraints
+
+1
+≤
+T
+≤
+100
+
+1
+≤
+|
+s
+|
+≤
+1000
+
+Sample Input 1
+
+4
+algozenith
+abba
+goomgle
+fft
+
+Sample Output 1
+
+9
+0
+3
+1*/
+
+// approach 
+
+/*very good technique ---> first make inverse of the original array(L) and then calculate lcs of 
+ inverse array and original array.  then L-LCS=min. no of element need to insert in the original array
+  to make it palindrom.  */
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
