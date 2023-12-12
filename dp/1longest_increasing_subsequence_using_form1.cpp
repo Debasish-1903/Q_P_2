@@ -58,7 +58,7 @@ ans=rec(level+1,last_taken);
  
 	if(arr[level]>arr[last_taken]){
 		
-		ans1=1+rec(level+1,arr[level]); // take 
+		ans1=1+rec(level+1,level); // take 
 	}
 	  
 	 ans=max(ans,ans1);
