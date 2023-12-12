@@ -88,9 +88,9 @@ Sample Output 1
 6
 2
 
-*/
+*//*WRONG ANS*/ // THIS CODE IS GIVING WRONG ANS SO PLS DON'T FOLLOW IT 
 
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
 #define ld long double
@@ -130,7 +130,7 @@ ll rec(ll level,ll last_taken){ // form 2 : best increasing lenght(max length) f
 	//pruning
 	
 	// basecase 
-	if(level>n+1)return 0;
+	if(level>n)return 0;
 	
 	// cache check 
 	if(done[level][last_taken])return dp[level][last_taken];
@@ -138,10 +138,10 @@ ll rec(ll level,ll last_taken){ // form 2 : best increasing lenght(max length) f
 	// compute 
 	
 	ll ans=1;
-	ans=max(ans,rec(level+1,last_taken));
+	ans=max(ans,rec(level+1,last_taken));// don't take
 	if(arr[level]>arr[last_taken]){
 		
-		ans=max(ans,1+rec(level+1,arr[level]));
+		ans=max(ans,1+rec(level+1,level)); //take
 	}
 	
 	
@@ -171,23 +171,23 @@ for(ll i=0;i<n;i++){
 	
 memset(done,0,sizeof(done));
 
-ll best=0;
+
 ll temp;
+unordered_map<ll,ll>mp;
+for(ll i=0;i<n;i++){
+	
+	temp=rec(i,i);
+	mp[temp]++;
+	
+	
+	
+}
 ll cnt=0;
-	for(ll i=1;i<=n;i++){
-		
-		temp=rec(i,i);
-			cout<<"rec(i,i)="<<temp<<nl;
-		
-		if(temp==best)cnt++;
-		if(temp>best){
-			best=temp;
-			cnt=1;
-		}
-			
+for(auto it:mp){
+	cnt=max(cnt,it.s);
 	
-	
-	}
+}
+
 	//cout<<"rec(i,i)="<<temp<<nl;
 	cout<<cnt<<nl;
 	
@@ -203,6 +203,141 @@ signed main(){
 	cin.tie(0);cout.tie(0);
 	
 	 int _t; cin>>_t;while(_t--)
+		solve();
+	
+	
+	//cerr<<"Time elapsed: "<< 1.0*clock()/ CLOCKS_PER_SEC << "s.\n\n";
+	
+	
+	
+	
+} */
+
+
+/*WRONG ANS*/ //THIS CODE IS GIVING WRONG ANS SO FOLLOW BELOW ONE //
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define ld long double
+#define ull unsigned long long int
+#define mod 1000000007
+#define inf 1e9
+#define mt make_tuple
+#define pb push_back
+#define eb emplace_back
+#define pob pop_back
+#define f first
+#define s second
+#define nl "\n"
+#define pi pair<int,int>
+#define v vector<long long int>
+#define vp vector<pair<int,int>>
+#define vvl vector<vector<long long int>>
+#define rep(n) for(int i=0 ; i<n ; i++)
+#define rei(i) for(int i=n ; i>0 ; i--)
+#define prio priority_queue
+#define np next_permutation
+#define N 200100
+
+#define yes "YES"
+#define no "NO"
+
+
+
+
+ ll n;
+  ll arr[1010];
+ll cnt[1010];
+ll dp[1010];
+bool done[1010];
+
+ll rec(ll level){
+	
+	// base case
+	if(cnt[level]==1)return 1;
+	
+	
+	// cache check;
+	
+	if(done[level])return dp[level];
+	// compute
+	
+	ll ans=0;
+	for(ll i=level-1;i>=0;i--){
+		
+		if(arr[i]<arr[level]&&cnt[i]==cnt[level]-1){
+			
+			ans+=rec(i);
+		}
+	} 
+	
+	
+	// save and return
+	done[level]=true;
+	return dp[level]=ans;
+	
+	
+	
+}
+
+
+
+
+
+void solve(){
+	
+	cin>>n;
+	for(ll i=0;i<n;i++){
+		
+		cin>>arr[i];
+	}
+	
+	
+	
+	
+	std::vector<ll>ans;
+	
+	memset(done,0,sizeof(done));
+	
+	for(ll i=0;i<n;i++){
+		
+		if(ans.empty()||ans.back()<arr[i]){
+			ans.push_back(arr[i]);
+			cnt[i]=ans.size();
+			
+	}else{
+		
+		auto it=lower_bound(ans.begin(),ans.end(),arr[i]);
+		*it=arr[i];
+		cnt[i]=it-ans.begin()+1;
+		
+	}
+	}
+	
+	ll result=0;
+	for(ll i=0;i<n;i++){
+		
+		if(cnt[i]==ans.size()){
+			
+			result+=rec(i);
+		}
+	}
+	
+	
+	cout<<result<<nl;
+	
+	
+}
+
+signed main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	
+	int _t; cin>>_t;while(_t--)
 		solve();
 	
 	
