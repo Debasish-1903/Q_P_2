@@ -1,4 +1,4 @@
-#include<bits/stdc++.h> // using form 1;
+#include<bits/stdc++.h> // using form 1;   xxxxxxxx WRONG XXXXXXX NEED TO CHECK LETTER
 using namespace std;
 #define ll long long int
 #define ld long double
@@ -29,8 +29,9 @@ using namespace std;
 
 int n;
 
-int arr[1001];
-int dp[1001][1001];
+int arr[1010];
+ll dp[1010][100100];
+bool done[1010][100100];
 
 
 int rec(int level,int last_taken){ // longest subsequence upto level from [level,------n-1]; // take or don't take 
@@ -47,7 +48,7 @@ int rec(int level,int last_taken){ // longest subsequence upto level from [level
 	// }
 	
 	// cache check
-	if(dp[level][last_taken]!=-1)return dp[level][last_taken];
+	if(done[level][last_taken]!=0)return dp[level][last_taken];
 	// compute 
 	
 	//int ans=rec(level+1,last_taken); // dont take
@@ -80,7 +81,7 @@ void solve(){
 		
 	}
 	
-	memset(dp,-1,sizeof(dp));
+	memset(done,0,sizeof(done));
 	
 	int best=1;
 	for(int i=0;i<n;i++){
@@ -97,7 +98,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);
 	
-	// int _t; cin>>_t;while(_t--)
+	 int _t; cin>>_t;while(_t--)
 		solve();
 	
 	
