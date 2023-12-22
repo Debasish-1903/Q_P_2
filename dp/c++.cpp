@@ -51,11 +51,13 @@ ll mul(ll a,ll b){
 	
 	return ans;
 }*/
-
+#include<cstdio> //c standered input output
 
 void solve(){
 	
 	puts("click the button");
+	
+	cout<<sizeof( short )<<nl;
 	
 	
 }
