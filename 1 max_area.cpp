@@ -5,9 +5,11 @@ Difficulty :
  Memory: 256 MB Accepted Submissions: 100
 Description
 
-You have a rectangular sheet of paper with dimensions H x W. You make N horizontal and verticals cuts in the sheet. Find the area of the maximum fragment after each cut.
+You have a rectangular sheet of paper with dimensions H x W. You make N horizontal and verticals cuts in the sheet.
+Find the area of the maximum fragment after each cut.
 
-It is guaranteed that there won't be any two identical cuts. Also, The cut that you make in the previous queries persists on the paper for the next queries. 
+It is guaranteed that there won't be any two identical cuts. Also, The cut that you make in the previous queries 
+persists on the paper for the next queries. 
 
 
 Input Format
@@ -16,7 +18,8 @@ The first line of the input contains one integer T - the number of test cases. T
 
 The first line of each test case contains three space-separated integers H W N - the dimensions of the sheet and the number of cuts.
 
-Each of the next N lines is of the form H Y or V X. For H Y, you make a horizontal cut at distance Y from the lower edge of the sheet and for V X, you make a vertical cut at a distance X from the left edges of the sheet.
+Each of the next N lines is of the form H Y or V X. For H Y, you make a horizontal cut at distance Y from the lower edge of 
+the sheet and for V X, you make a vertical cut at a distance X from the left edges of the sheet.
 
 
 Output Format
@@ -62,7 +65,6 @@ Sample Output 1
 3
 3 */
 
-
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
@@ -86,12 +88,9 @@ using namespace std;
 #define prio priority_queue
 #define np next_permutation
 #define N 200100
-
 #define yes "YES"
 #define no "NO"
 
-
- 
 void solve(){
 	
 ll h,w,n;
@@ -144,9 +143,7 @@ while(n--){
     auto ans=(*h_seg.begin())*(*w_seg.begin());
     
     cout<<ans<<nl;
-    
-    
-    
+     
 }
 	
 }
@@ -160,8 +157,5 @@ signed main(){
 	
 	
 	//cerr<<"Time elapsed: "<< 1.0*clock()/ CLOCKS_PER_SEC << "s.\n\n";
-	
-	
-	
 	
 }
