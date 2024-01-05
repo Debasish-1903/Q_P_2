@@ -90,7 +90,7 @@ ll rec(ll level,ll match){
 	
 	// basecase
 	
-	if(level==n)return 1;
+	if(level==0)return 1;
 	
 	//cache check
 	if(dp[level][match]!=-1)return dp[level][match];
@@ -102,19 +102,19 @@ ll rec(ll level,ll match){
 	
 	if(match==0){
 		
-		ans=rec(level+1,0)+rec(level+1,1);
+		ans=rec(level-1,0)+rec(level-1,1);
 		
 	}else if(match==1){
 		
-		ans=rec(level+1,1)+rec(level+1,2);
+		ans=rec(level-1,1)+rec(level-1,2);
 		
 	}else if(match==2){
 		
-		ans=rec(level+1,3)+rec(level+1,0);
+		ans=rec(level-1,3)+rec(level-1,0);
 		
 	}else if(match==3){
 		
-		ans=rec(level+1,4)+rec(level+1,2);
+		ans=rec(level-1,4)+rec(level-1,2);
 		
 	}
 	
@@ -131,9 +131,9 @@ ll rec(ll level,ll match){
 void solve(){
 	
 	cin>>n;
-	memset(dp,-1,sizeof(dp));
 	
-	cout<<rec(0,0)<<nl;
+	
+	cout<<rec(n,0)<<nl;
 	
 	
 	
@@ -145,7 +145,7 @@ signed main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);cout.tie(0);
 	
-	
+	memset(dp,-1,sizeof(dp));
 	
 	int _t; cin>>_t;while(_t--)
 		solve();

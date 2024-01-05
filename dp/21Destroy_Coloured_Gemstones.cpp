@@ -89,57 +89,63 @@ ll n;
 
 vector<ll>arr;
 ll dp[110][110];
-ll dp_[110];
+//ll dp_[110];
 
 
-ll palindrom(ll l,ll r){
+// ll palindrom(ll l,ll r){
 	
 	
-	if(l>=r)return 1;
+// 	if(l>=r)return 1;
 	
-	if(dp[l][r]!=-1)return dp[l][r];
+// 	if(dp[l][r]!=-1)return dp[l][r];
 	
-	ll ans=0;
-	if(arr[l-1]==arr[r-1]){
-	if(palindrom(l+1,r-1))ans=1;
+// 	ll ans=0;
+// 	if(arr[l-1]==arr[r-1]){
+// 	if(palindrom(l+1,r-1))ans=1;
 	
-	}
+// 	}
 	
-	return dp[l][r]=ans;
-}
+// 	return dp[l][r]=ans;
+// }
 
 
-ll rec(ll i){
+ll rec(ll l,ll r){
 	
 	//pruning 
 	
 	
 	// base case 
-	if(i==0)return -1;
+   if(l>r)return 0;
+   
+   if(l==r)return 1;
 	
 	
 	// cache and check 
-	if(dp_[i]!=-1)return dp_[i];
+	if(dp[l][r]!=-1)return dp[l][r];
 	
 	
 	// compute
-	
-	ll ans=1e18; 
-	for(ll j=0;j>=0;j++){
-		if(palindrom(j+1,i)){
-			
-		//	arr.erase(arr.begin()+j,arr.begin()+i+1);
-			ans=min(ans,1+rec(j));
-			
-			
-		}
-		
-	}
-	
-	
+	ll ans=1e18;
+
+	    ans=min(ans,1+rec(l+1,r));
+	    
+	    if(arr[l]==arr[l+1]){
+	        
+	          ans=min(ans,1+rec(l+2,r));
+	    }//else{
+	    
+	    for(ll i=l+2;i<=r;i++){
+	        
+	        if(arr[l]==arr[i]){
+	              ans=min(ans,rec(l+1,i-1)+rec(i+1,r));
+	            
+	        }
+	    }
+	   // }
+	 
 	// save and return 
 	
-	return dp_[i]=ans;
+	return dp[l][r]=ans;
 	
 	
 	
@@ -163,8 +169,8 @@ for(ll i=0;i<n;i++){
 
 
 memset(dp,-1,sizeof(dp));
-memset(dp_,-1,sizeof(dp_));
-cout<<rec(n)<<nl;
+//memset(dp_,-1,sizeof(dp_));
+cout<<rec(0,n-1)<<nl;
 
 
 	

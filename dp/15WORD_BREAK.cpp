@@ -251,8 +251,8 @@ void solve(){
 	}
 	
 	memset(dp,-1,sizeof(dp));
-	if(rec(0,s))cout<<"YES"<<nl;
-	else cout<<"NO"<<nl;
+	if(rec(0,s))cout<<"Yes"<<nl;
+	else cout<<"No"<<nl;
 
 	
 	

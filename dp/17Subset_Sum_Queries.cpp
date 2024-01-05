@@ -1,7 +1,7 @@
 /*Subset Sum Queries
 
 Time-Limit: 1 sec Score: 1.00/100
-Difficulty : 
+Difficulty : **
  Memory: 256 MB Accepted Submissions: 100
 Relevant For:
 Description
