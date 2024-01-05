@@ -1,4 +1,4 @@
-Collisions
+/*Collisions
 
 Time-Limit: 1 sec Score: 50.00/100
 Difficulty : 
@@ -58,4 +58,118 @@ In the first test case of the example, at t=1 the balls collide. The number of c
 
 In the second test case of the example, at t=1, the first ball on X-axis and the first ball on Y-axis collide and disappear. The number of collisions is 1.
 
-In the third test case of the example, at t=⅓, the second ball on X-axis and the first ball on Y-axis collide and disappear. At t=1, the first ball on X-axis and the second ball on Y-axis collide and disappear. The number of collisions is 2.
+In the third test case of the example, at t=⅓, the second ball on X-axis and the first ball on Y-axis collide and disappear. At t=1, the first ball on X-axis and the second ball on Y-axis collide and disappear. The number of collisions is 2.*/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define ld long double
+#define ull unsigned long long int
+#define mod 1000000007
+#define inf 1e9
+#define mt make_tuple
+#define pb push_back
+#define eb emplace_back
+#define pob pop_back
+#define f first
+#define s second
+#define nl "\n"
+#define pi pair<int,int>
+//#define v vector<long long int>
+#define vp vector<pair<int,int>>
+#define vvl vector<vector<long long int>>
+#define rep(n) for(int i=0 ; i<n ; i++)
+#define rei(i) for(int i=n ; i>0 ; i--)
+#define prio priority_queue
+#define np next_permutation
+#define N 200100
+
+#define yes "YES"
+#define no "NO"
+
+
+
+
+ /*ll add(ll a,ll b){
+	
+	ll ans=(a+b)%mod;
+	if(ans<0) ans+=mod;
+	
+	return ans;
+}
+
+ ll sub(ll a,ll b){
+	
+	ll ans=(a-b)%mod;
+	if(ans<0) ans+=mod;
+	
+	return ans;
+}
+
+ll mul(ll a,ll b){
+	
+	ll ans=(a*b)%mod;
+	if(ans<0) ans+=mod;
+	
+	return ans;
+}*/
+
+
+void solve(){
+
+ll n,m;
+
+cin>>n>>m;
+ unordered_map<ll,ll>mp;
+ 
+ while(n--){
+     ll x,u;
+     cin>>x>>u;
+     
+     ll mul=x*u;
+     
+     mp[mul]++;
+     
+ }
+ 
+
+ 
+ ll cnt=0;
+while(m--){
+    
+    ll y,v;
+    cin>>y>>v;
+    
+    ll mul=y*v;
+    
+    if(!mp.empty()&&mp.find(mul)!=mp.end()){
+       
+       mp[mul]--;
+        cnt++;
+        
+        if(mp[mul]==0)mp.erase(mul);
+    }
+    
+    
+    
+}
+
+
+cout<<cnt<<nl;
+
+}
+
+signed main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	
+	 int _t; cin>>_t;while(_t--)
+		solve();
+	
+	
+	//cerr<<"Time elapsed: "<< 1.0*clock()/ CLOCKS_PER_SEC << "s.\n\n";
+	
+	
+	
+	
+}

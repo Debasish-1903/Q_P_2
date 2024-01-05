@@ -131,9 +131,9 @@ void rec(ll level){
         current_perm.push_back(num);
         available.erase(available.find(num));
         rec(level+1);
-        current_perm.pop_back();
+       
        available.insert(num);
-        
+         current_perm.pop_back();
         
     }
     

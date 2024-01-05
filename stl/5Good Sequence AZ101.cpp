@@ -1,4 +1,4 @@
-Good Sequence AZ101
+/*Good Sequence AZ101
 
 Time-Limit: 1 sec Score: 100.00/100
 Difficulty : 
@@ -55,4 +55,107 @@ For the first test case, remove 2
 
 For the second test case, remove 3 and 4
 
-For the third test case, remove 6, 6, 1 and 2
+For the third test case, remove 6, 6, 1 and 2 */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define ld long double
+#define ull unsigned long long int
+#define mod 1000000007
+#define inf 1e9
+#define mt make_tuple
+#define pb push_back
+#define eb emplace_back
+#define pob pop_back
+#define f first
+#define s second
+#define nl "\n"
+#define pi pair<int,int>
+#define v vector<long long int>
+#define vp vector<pair<int,int>>
+#define vvl vector<vector<long long int>>
+#define rep(n) for(int i=0 ; i<n ; i++)
+#define rei(i) for(int i=n ; i>0 ; i--)
+#define prio priority_queue
+#define np next_permutation
+#define N 200100
+
+#define yes "YES"
+#define no "NO"
+
+
+
+
+ /*ll add(ll a,ll b){
+	
+	ll ans=(a+b)%mod;
+	if(ans<0) ans+=mod;
+	
+	return ans;
+}
+
+ ll sub(ll a,ll b){
+	
+	ll ans=(a-b)%mod;
+	if(ans<0) ans+=mod;
+	
+	return ans;
+}
+
+ll mul(ll a,ll b){
+	
+	ll ans=(a*b)%mod;
+	if(ans<0) ans+=mod;
+	
+	return ans;
+}*/
+
+
+void solve(){
+
+ll n;
+
+cin>>n;
+
+unordered_map<ll,ll>mp;
+
+for(ll i=0;i<n;i++){
+    
+    ll x;
+    cin>>x;
+    
+    mp[x]++;
+    
+    
+}
+
+ll cnt=0;
+
+for(auto it:mp){
+    
+    if(it.s<it.f)cnt+=it.s;
+    else if(it.s>it.f)cnt+=(it.s-it.f);
+}
+
+cout<<cnt<<nl;
+
+
+    
+}
+
+signed main(){
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);cout.tie(0);
+	
+	 int _t; cin>>_t;while(_t--)
+		solve();
+	
+	
+	//cerr<<"Time elapsed: "<< 1.0*clock()/ CLOCKS_PER_SEC << "s.\n\n";
+	
+	
+	
+	
+}

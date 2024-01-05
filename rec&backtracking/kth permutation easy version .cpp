@@ -54,6 +54,8 @@ Explanation 1: All 9 permutations in lexicographic order are
 3 2 1
 The 4th one is {2, 3, 1}. */
 
+
+
 #include <bits/stdc++.h>
 using namespace std;
 #define IOS                       \
@@ -121,6 +123,10 @@ signed main()
     solve();
     return 0;
 }
+
+
+
+
 
 
 #include<bits/stdc++.h>
