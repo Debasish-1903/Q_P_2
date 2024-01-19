@@ -1,7 +1,7 @@
-Travel Optimisation
+/*Travel Optimisation
 
 Time-Limit: 3 sec Score: 0.00/100
-Difficulty : 
+Difficulty : ****(std) 
  Memory: 256 MB Accepted Submissions: 100
 Relevant For:
 Description
@@ -70,13 +70,15 @@ Travel from 1 to 2 using Bus -> 1
 Travel from 2 to 4 using Flight -> 1 + 1 = 2
 Travel From 4 to 5 using Bus -> 4
 Total Cost = 7
+   */
+
 
 
 
 //complete approachj 
 
 
-Naive 
+/*Naive 
 O(N∗K∗M)DP :State : dp[i][f]→ min cost to reach ith city from 1st
  city using 
 f
@@ -106,6 +108,8 @@ Note -:
 Expected Complexity per test case for this problem is -
 Time : O(N∗M).
 Space : O(N).
+  */
+
 
 
 #include <bits/stdc++.h>
