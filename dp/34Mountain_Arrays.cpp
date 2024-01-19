@@ -1,4 +1,4 @@
-Mountain Arrays
+/*Mountain Arrays
 
 Time-Limit: 5 sec Score: 1.00/100
 Difficulty : ****(minimal)
@@ -37,5 +37,44 @@ Sample Input 1
 
 Sample Output 1
 
-4
-126
+4 
+126  */
+
+
+#include <bits/stdc++.h> 
+using namespace std;
+#define int long long
+
+int mod = 1e9+7;
+int n, k;
+int a[1001];
+int dp[1001][1001];
+int rec(int l, int r, int index){
+    
+    //cout<<"l:"<<l<<" r:"<<r<<" indx:"<<index<<endl;
+    if(index==n){
+        if(l==0 or r==0) return 0;
+        return 1LL;
+    }
+    if(~dp[l][r]) return dp[l][r];
+    int ans = 0;
+    if(a[index]+k>=a[l]) ans = rec(index, r, index+1);
+   // cout<<endl<<"left:"<<l<<" r:"<<r<<" indx:"<<index<<endl;
+    
+    if(a[index]+k>=a[r]) (ans += rec(l, index, index+1))%=mod;
+    return dp[l][r] = ans;
+}
+
+void solve(){
+    cin>>n>>k; for(int i = 0; i < n; i++) cin>>a[i];
+    sort(a, a+n); reverse(a, a+n);
+    memset(dp, -1, sizeof(dp));
+    cout << rec(0, 0, 1) << '\n';
+}   
+
+signed main(){
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    //solve();
+    int t; cin >> t; for(int i = 0; i < t; i++) solve();
+    return 0;
+}
