@@ -159,6 +159,8 @@ void solve(){
 	}
 	
 	else cout<<dist[n]<<" "<<path[n]<<" "<<min_fl[n]<<" "<<max_fl[n];
+	
+	
 
 }
 
