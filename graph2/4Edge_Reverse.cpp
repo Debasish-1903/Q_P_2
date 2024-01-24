@@ -1,3 +1,88 @@
+/*Edge Reverse
+
+Time-Limit: 1 sec Score: 50.00/100
+Difficulty : ** (min)
+ Memory: 256 MB Accepted Submissions: 100
+Relevant For:
+Description
+
+Given a directed graph with 
+N vertices and  M edges.
+
+What is the minimum number of edges needed to reverse in order to have at least
+ one path from vertex 
+1 to vertex 
+N
+, where the vertices are numbered from 
+1 to N
+ ?
+
+
+Input Format
+
+The first line contains 
+T
+ - the number of test cases.
+
+The first line of each test case contains two space-separated integers N and M
+, denoting the number of vertices and the number of edges in the graph respectively.
+The ith
+ line of the next M lines of each test case contains two space-separated integers Xi and Yi
+, denoting that the ith
+ edge connects vertices from  Xi
+ to Yi.
+
+
+Output Format
+
+For each test case, In a single line, print the minimum number of edges we need to revert. 
+If there is no way of having at least one path from 
+1 to N, print -1.
+
+
+Constraints
+1<T<10;
+1<N,M<10^5
+1<xi,yi<N;
+
+
+There can be multiple edges connecting the same pair of vertices,
+ There can be self-loops too i.e. Xi= Yi
+
+Sample Input 1
+
+1
+7 7
+1 2 
+3 2
+3 4
+7 4
+6 2
+5 6
+7 5
+
+Sample Output 1
+
+2
+
+Note
+
+We can consider two paths from 1 to 7:
+
+7
+In the first one we need to revert edges 
+
+. In the second one - 
+
+. So the answer is 
+
+
+.*/
+
+
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
