@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h>  // with the printing the path of dijkstra 
 using namespace std;
 #define ll long long int
 #define ld long double
@@ -66,10 +66,13 @@ void dijkstra(ll src){
 		
 		dist[i]=1e18;
 		visited[i]=0;
+		//parent[i]=-1;
 		
 	}
 	
 	dist[src]=0;
+	
+	vector<ll>parent(n+1,-1);
 	
 	 priority_queue<ii,vector<ii>,greater<ii>>pq;
 	 pq.push(mp(dist[src],src));
@@ -98,6 +101,7 @@ void dijkstra(ll src){
            	if(dis+weight<dist[v]){
            		
            		dist[v]=dis+weight;
+           		parent[v]=node;
            		
            		pq.push(mp(dist[v],v));
            	}
@@ -118,7 +122,36 @@ void dijkstra(ll src){
 		
 		
 		cout<<"i"<<i<<" "<<"dist:"<<dist[i]<<nl;
+		
+		
+		
+		
+		if(i!=src){
+		    
+		    cout<<"path"<<" ";
+		    vector<ll>path;
+		    for(ll v=i;v!=-1;v=parent[v]){
+		        
+		        path.push_back(v);
+		    }
+		    
+		   reverse(path.begin(),path.end());
+		   
+		   
+		   for(auto v:path){
+		       
+		       cout<<v<<" ";
+		   }
+		   cout<<nl;
+		    
+		}
+		
 	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -142,12 +175,12 @@ void solve(){
 		g[b].push_back({a,w});
 		
 		 
-		 dijkstra(1);
+		
 		
 		
 	}
 	
-	
+	 dijkstra(1);
 	
 	
 	
