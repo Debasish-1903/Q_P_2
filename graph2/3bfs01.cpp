@@ -55,7 +55,7 @@ void bfs01(ll src){
 	
 	dq.push_back(src);
 	
-	
+	vector<ll>parent(n+1,-1);
 	
 	while(!dq.empty()){
 		
@@ -75,6 +75,7 @@ void bfs01(ll src){
 		 	    if(dist[v]>dist[node]+w){
 		 	    	
 		 	    	dist[v]=dist[node]+w;
+		 	    	parent[v]=node;
 		 	    	
 		 	    	if(w==0){
 		 	    		
@@ -97,7 +98,38 @@ void bfs01(ll src){
 	}
 	
 	for(int i=1;i<=n;i++){
-	cout<<"i:"<<i<<" dist:"<<dist[i]<<nl;}  // print the distance from each node 
+	cout<<"i:"<<i<<" dist:"<<dist[i]<<nl;
+	
+	if(i!=src){
+		
+		
+		
+		cout<<"path :"<<" ";
+		
+		vector<ll>path;
+		
+		for(ll v=i;v!=-1;v=parent[v]){
+			
+			path.push_back(v);
+			
+		}
+		
+		reverse(path.begin(),path.end());
+		
+		
+		for(auto it:path){
+			
+			cout<<it<<" ";
+		}
+		cout<<nl;
+	}
+	
+	
+	
+	
+	
+	
+	}  // print the distance from each node 
 	
 	
 	// tc = O(v+e)
