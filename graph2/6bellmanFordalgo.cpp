@@ -130,8 +130,8 @@ struct Edge {
     int src, dest, weight;
 };
 
-vector<int> BellmanFord(int V, int src, vector<Edge>& edges) {
-    vector<int> dist(V, 1e18);
+vector<int> BellmanFord(int V, int src, vector<Edge>&edges) {
+    vector<int> dist(V,1e18);
     dist[src] = 0;
 
     for(int i = 0; i < V - 1; i++) {
