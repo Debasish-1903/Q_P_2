@@ -124,7 +124,7 @@ void solve(){
 		for(ll i=k;i<n;i++){
 			for(ll j=k;j<n;j++){
 				
-				temp+=dist[node[i]][node[j]];
+				temp+=dist[node[i]][node[j]]; //// get the all pair distnce for all active nodes.
 			}
 		}
 		
@@ -161,3 +161,89 @@ signed main(){
 	
 	
 }
+
+
+/*The process of removing vertices from the present to the future is equivalent to adding vertices from the future to the present.
+Therefore, the problem can be reframed as follows: Start from the future, progressively add vertices, and eventually reconstruct the graph as provided in the input.
+
+Example
+Lets take the Test Case 2 into consideration :
+So the adjacency matrix is
+
+0 3 1 1
+6 0 400 1
+2 4 0 1
+1 1 1 0
+The order in which vertices are removed are
+
+4 1 2 3
+We remove the vertex 1 at first and then remove the vertex 2.
+
+Step 1 : Starting from future
+So as discussed we would approach this problem from future. Initially we dont have any nodes so the total cost of shortest paths will be 0.
+
+Step 2 : Adding node 3
+We add the vertex 3 to an empty graph. The shortest path costs will still be 0 because there is no other node to traverse to. There is just a node 3 and traveling to 3 requires 0 cost.
+
+So the shortest path adjacency matrix now stands to be
+
+0
+Step 3 : Adding node 2
+After adding node 2, we now have 2 nodes 2 and 3. Using the floyd warshal algorithm continuation to find the shortest path matrix we get :
+
+0 400
+4 0
+So the shortest path summation comes out to be 404.
+
+Step 4 : Adding node 1
+After adding node 1, we now have 3 vertices 1, 2 and 3. Using the floyd warshal algorithm continuation to find the shortest path matrix we get :
+
+0 3 1
+6 0 7
+2 4 0
+So the shortest path summation comes out to be 23.
+
+Step 4 : Adding node 4
+After adding node 4, we now have all the 4 vertices 1, 2, 3 and 4. Using the floyd warshal algorithm continuation to find the shortest path matrix we get :
+
+0 1 1 1
+1 0 2 1
+1 2 0 2
+1 2 2 0
+So the shortest path summation comes out to be 17.
+
+So we got our answers as 0, 404, 23, 17. Since this is the shortest path values as we keep on adding the vertices from future, we need to reverse them to get the values of removing the vertices each time and getting the shortest path sum cost.
+
+
+#include<bits/stdc++.h>
+#define ll long long int
+#define N 510
+using namespace std;
+
+ll inf=1e16;
+int main()
+{
+    int n;
+    ll A[N][N]; // the adjecency matrix
+    scanf("%d",&n); // take n.
+    for(int i=0;i<n;i++) for(int j=0;j<n;j++) scanf("%lld",&A[i][j]); // we take the graph in a 0 indexed manner.
+    vector<ll> ans; // the final answer array.
+    int x[N]; // the order of elements removed.
+    for(int i=0;i<n;i++) scanf("%d",&x[i]),x[i]--;// take input, -- for 0 index
+    for(int i=n-1;i>=0;i--) // move from backward [x[i],x[i+1]...x[n-1]] are the active edges.
+    {
+        for(int j=0;j<n;j++) 
+            for(int k=0;k<n;k++) 
+                A[j][k]=min(A[j][k],A[j][x[i]]+A[x[i]][k]); // relax the current node (Floyd washall)
+
+        // After the ith iteration. The matrix has relaxed nodes x[i],x[i+1]...x[n-1].
+        // So we these are the active nodes, and Floyd warshall ensures all those have correct shortest paths.
+        ll temp=0;
+        for(int j=i;j<n;j++) 
+            for(int k=i;k<n;k++)
+                temp+=A[x[j]][x[k]]; // get the all pair distnce for all active nodes.
+        ans.push_back(temp); // add it to the ans.
+    }
+    for(int i=(int)ans.size()-1;i>=0;i--) printf("%lld ",ans[i]); // print in reverse order as we added instead of remove.
+    return 0;
+}*/
